@@ -78,7 +78,7 @@
         </div>
         <div id="row">
             <h3 id="newbook">
-                새로나온책<span><a href="/com.solponge/productList">전체보기</a></span>
+                새로나온책!!!<span><a href="/com.solponge/productList">전체보기</a></span>
             </h3>
             <c:forEach var="productNew" items="${getproductNewTop8List}">
                 <div class="column">

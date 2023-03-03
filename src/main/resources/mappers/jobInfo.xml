@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="collection_of_sql_job_info">
+    <select id="Searchlist_all" resultType="com.solponge.domain.jobinfo.JopInfoVo">
+        SELECT * FROM job_info WHERE product_title LIKE '%' || #{SearchValue} || '%' OR product_writer LIKE '%' || #{SearchValue} || '%'
+
+    </select>
+    <select id="Searchlist_product_title" resultType="com.solponge.domain.jobinfo.JopInfoVo">
+        SELECT * FROM job_info WHERE product_title LIKE '%' || #{SearchValue} || '%'
+    </select>
+    <select id="Searchlist_product_writer" resultType="com.solponge.domain.jobinfo.JopInfoVo">
+        SELECT * FROM job_info WHERE product_writer LIKE '%' || #{SearchValue} || '%'
+    </select>
+    <select id="list" resultType="com.solponge.domain.jobinfo.JopInfoVo">
+        SELECT * FROM job_info
+    </select>
+    <select id="list_new_8" resultType="com.solponge.domain.jobinfo.JopInfoVo">
+        <![CDATA[
+        SELECT *
+        FROM (
+                 SELECT DISTINCT infonum, jinfoField, companyname, infoname, ftaglist, qualificat, worktype, workarea, Deadline, pagecode, infolink
+                 FROM job_info
+                 ORDER BY infonum DESC
+             )
+        WHERE ROWNUM <= 8
+        ]]>
+    </select>
+
+    <select id="job_info" resultType="com.solponge.domain.jobinfo.JopInfoVo">
+        select * from job_info where infonum=#{infonum}
+    </select>
+    <insert id="insertjob_info" useGeneratedKeys="true" keyProperty="product_num" keyColumn="product_num">
+        INSERT INTO job_info (infonum, jinfoField, companyname, infoname, ftaglist, qualificat, worktype, workarea, Deadline, pagecode, infolink)
+        VALUES (job_info_SEQ.NEXTVAL, #{jinfoField},#{companyname},#{infoname},#{ftaglist},#{qualificat},#{worktype},#{workarea},#{Deadline},#{pagecode}, #{infolink});
+    </insert>
+    <delete id="deletejob_info">
+        delete job_info where infonum=#{infonum}
+    </delete>
+    <update id="updatejob_info">
+        update job_info set infoname=#{infoname}, product_price=#{product_price}, product_stock=#{product_stock} where infonum=#{infonum}
+    </update>
+</mapper>

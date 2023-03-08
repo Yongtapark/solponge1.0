@@ -13,7 +13,21 @@ public interface JopInfoService {
 
     JopInfoVo getJopInfo(int infonum);
 
-    List<JopInfoVo> JopInfosearchlist(String SearchSelect, String SearchValue);
-    List<JopInfoVo> getJopInfoList();
+    int JopInfosearchlist_count(String SearchSelect, String SearchValue);
+
+    List<JopInfoVo> JopInfosearchlist_page(String SearchSelect, String SearchValue, int start, int end);
+
+    List<JopInfoVo> getJopInfoListpage(int start, int end);
+
+    int getJopInfoList();
+
     List<JopInfoVo> getJopInfoNewTop8List();
+
+    List<JopInfoVo> getCompanyTojobinfoList(String companyname);
+
+    List<JopInfoVo> getCompanyInScrapList(String[] companynames);
+
+    List<JopInfoVo> getInfoInScrapList(String[] infonames);
+
+    List<JopInfoVo> getInfoInScrapSearchList(String SearchSelect, String SearchValue, String[] infonames);
 }

@@ -22,11 +22,12 @@ public class WebConfig implements WebMvcConfigurer {
                         "/com.solponge/join",
                         "/com.solponge/login",
                         "/com.solponge/product/**",
+                        "/com.solponge/productList/**",
+                        "/com.solponge/jobinfolist/**",
+                        "/com.solponge/jobinfo/**",
                         "/css/**",
                         "/img/**",
                         "/js/**"
-
                 );
-        
     }
 }

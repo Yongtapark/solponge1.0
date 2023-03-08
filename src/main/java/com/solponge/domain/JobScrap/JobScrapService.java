@@ -4,13 +4,15 @@ import java.util.List;
 
 public interface JobScrapService {
     // CRUD
-    void insertJobScrap_company(JobScrapVO vo);
+    void insertJobScrap_company(companyScrapVO vo);
 
-    void insertJobScrap_infoname(JobScrapVO vo);
+    void insertJobScrap_infoname(InfScrapVO vo);
 
     void deleteJobScrap_company(Long MEMBER_NO, String companyName);
 
     void deleteJobScrap_infoname(Long MEMBER_NO, String infoname);
 
-    List<JobScrapVO> getJobScrapList(Long MEMBER_NO);
+    List<companyScrapVO> getcompanyScrapVOScrapList(Long MEMBER_NO);
+
+    List<InfScrapVO> getinfoScrapVOScrapList(Long MEMBER_NO);
 }

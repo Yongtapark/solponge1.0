@@ -17,6 +17,10 @@
 /*    bottom: 0;*/
 /*    width: 100%;*/
 /*}*/
+#Newjob8 td{
+    height: 74px;
+    padding: 2px;
+}
 
 #container {
     width: 1300px;

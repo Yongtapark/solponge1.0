@@ -70,3 +70,16 @@ CREATE TABLE job_info(
                          job_info_link VARCHAR2(4000)
 );
 
+CREATE TABLE companyScrap (
+                              MEMBER_NO NUMBER(10),
+                              companyName VARCHAR2(1000),
+                              scrap_time DATE,
+                              CONSTRAINT fk_MEMBER_NO_CS FOREIGN KEY (MEMBER_NO) REFERENCES MEMBER2(MEMBER_NO)
+);
+
+CREATE TABLE InfScrap (
+                              MEMBER_NO NUMBER(10),
+                              infoname VARCHAR2(4000),
+                              scrap_time DATE,
+                              CONSTRAINT fk_MEMBER_NO_IS FOREIGN KEY (MEMBER_NO) REFERENCES MEMBER2(MEMBER_NO)
+);

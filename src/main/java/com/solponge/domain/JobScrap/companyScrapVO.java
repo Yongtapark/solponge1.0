@@ -5,7 +5,7 @@ import lombok.Data;
 import java.sql.Date;
 
 @Data
-public class JobScrapVO {
+public class companyScrapVO {
 //    private Long MEMBER_NO;
     private Long member_No;
     private String companyName;

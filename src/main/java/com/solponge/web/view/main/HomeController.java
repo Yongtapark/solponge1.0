@@ -1,5 +1,10 @@
 package com.solponge.web.view.main;
 
+import com.solponge.domain.JobScrap.InfScrapVO;
+import com.solponge.domain.JobScrap.JobScrapService;
+import com.solponge.domain.JobScrap.companyScrapVO;
+import com.solponge.domain.jobinfo.JopInfoService;
+
 import com.solponge.domain.member.MemberVo;
 import com.solponge.domain.member.impl.MemberServiceImpl;
 import com.solponge.domain.product.productService;
@@ -12,6 +17,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 @Controller
 @Slf4j
@@ -21,6 +30,8 @@ public class HomeController {
 
    private final MemberServiceImpl memberService;
    private final productService productService;
+    private final JopInfoService jopinfoService;
+    private final JobScrapService jobscrapService;
 
     @GetMapping("/main")
     public String homeLogin(@SessionAttribute(name = SessionConst.LOGIN_MEMBER,required = false) MemberVo loginMember, Model model){
@@ -84,6 +95,8 @@ public class HomeController {
         String phone = member.getMEMBER_PHONE1() + "-" + member.getMEMBER_PHONE2() + "-" + member.getMEMBER_PHONE3();
         member.setMEMBER_PHONE(phone);
     }
+
+
 
 
 }

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -74,16 +75,14 @@ public class produtController {
         }
         model.addAttribute("url", inputurl);
         model.addAttribute("status", "Yes");
-//        redirectAttributes.addAttribute("status", "Search");
+
         System.out.println(inputurl);
         return "product/productlist";
-//        return "redirect:./";
-//        return "redirect:productlist";
     }
 
     @GetMapping("/product/{productId}")
-    public String produtpage(@SessionAttribute(name = SessionConst.LOGIN_MEMBER,required = false) MemberVo loginMember,
-                             @PathVariable int productId, Model model){
+    public String produtpage(@PathVariable int productId, Model model,HttpServletRequest request){
+        MemberVo loginMember = getLoginMember(request);
         model.addAttribute("member",loginMember);
         productVo vo = ps.getproduct(productId);
         System.out.println(productId);
@@ -101,6 +100,7 @@ public class produtController {
         model.addAttribute("product_num",productId);
         model.addAttribute("quantityinput",quantityinput);
         model.addAttribute("member",loginMember);
+        System.out.println(requestParams);
         if (requestParams.containsKey("button1")) {
             return "redirect:/button1-page";
         } else {
@@ -109,6 +109,10 @@ public class produtController {
 
     }
 
+    private MemberVo getLoginMember(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        return session != null ? (MemberVo) session.getAttribute(SessionConst.LOGIN_MEMBER) : null;
+    }
 
 
 }
